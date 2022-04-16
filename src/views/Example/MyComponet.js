@@ -28,7 +28,6 @@ class MyComponet extends React.Component {
             type="text"
             onChange={(event) => this.handleOnChangeName(event)}
           />
-          <br></br>
           xin chao {this.state["name"]}
         </div>
         <div className="second">
@@ -37,12 +36,12 @@ class MyComponet extends React.Component {
             type="text"
             onChange={(eventC) => this.handleOnChangeChannel(eventC)}
           ></input>
-          <br></br>
           day la channel cua minh: {this.state.channel}
         </div>
         <div className="third">
           <button onClick={() => this.handleClickButton()}>Click me</button>
         </div>
+        <p>components: {this.props.name}</p>
       </>
     );
   }
