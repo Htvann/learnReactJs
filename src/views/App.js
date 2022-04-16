@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.scss';
-// import MyComponet from './Example/MyComponet';
+// import MyComponent from './Example/MyComponent';
 import MyForm from './Example/MyForm';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
 
-        {/* <MyComponet/> */}
+        {/* <MyComponent/> */}
         <MyForm/>
       </header>
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-class MyComponet extends React.Component {
+class MyComponent extends React.Component {
   state = {
     name: "van",
     channel: "vean",
@@ -41,13 +41,12 @@ class MyComponet extends React.Component {
         <div className="third">
           <button onClick={() => this.handleClickButton()}>Click me</button>
         </div>
-        <p>components: {this.props.name}</p>
       </>
     );
   }
 }
 
-export default MyComponet;
+export default MyComponent;
 
 // JSX => return block
 // fragment

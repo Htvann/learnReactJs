@@ -1,10 +1,15 @@
 import React from "react";
-import MyComponet from "./MyComponet";
-
+import ExProp from "./ExProp";
+import InfoForm from "./InfoForm";
 class MyForm extends React.Component {
   state = {
     firstname: "",
     lastname: "",
+    arrJobs: [
+      { id: "abc", title: "developer", salary: "500" },
+      { id: "def", title: "tester", salary: "100" },
+      { id: "ghi", title: "boss", salary: "5000" },
+    ],
   };
   changeFname = (event) => {
     this.setState({
@@ -18,7 +23,7 @@ class MyForm extends React.Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state )
+    console.log(this.state);
   };
   render() {
     return (
@@ -40,9 +45,13 @@ class MyForm extends React.Component {
           <br></br>
           <input type="submit" onClick={(event) => this.handleSubmit(event)} />
         </form>
-        <MyComponet name ={'one'}/>
-        <MyComponet name ={'two'}/>
-        <MyComponet name ={'three'}/>
+
+        <ExProp name={"one"} age={"23"} />
+        <InfoForm
+          Fname={this.state.firstname}
+          Lname={this.state.lastname}
+          arrJobs={this.state.arrJobs}
+        />
       </>
     );
   }
