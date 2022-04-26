@@ -1,52 +1,70 @@
-import React from "react";
-
+import React from 'react';
+import ChildComponent from './ChildComponent';
 class MyComponent extends React.Component {
-  state = {
-    name: "van",
-    channel: "vean",
-  };
+    //key:value
+    state = {
+        firstName: '',
+        lastName: '',
+        arrJobs: [
+            { id: 'abcJob1', title: 'Developers', salary: '500 $' },
+            { id: 'abcJob2', title: 'Testers', salary: '400 $' },
+            { id: 'abcJob3', title: 'Project managers', salary: '1000 $' }
+        ]
+    }
 
-  handleOnChangeName = (event) => {
-    this.setState({
-      name: event.target.value,
-    });
-  };
-  handleOnChangeChannel = (eventC) => {
-    this.setState({
-      channel: eventC.target.value,
-    });
-  };
-  handleClickButton = () => {
-    alert("ho thanh van");
-  };
-  render() {
-    return (
-      <>
-        <div className="first">
-          <input
-            value={this.state.name}
-            type="text"
-            onChange={(event) => this.handleOnChangeName(event)}
-          />
-          xin chao {this.state["name"]}
-        </div>
-        <div className="second">
-          <input
-            value={this.state.channel}
-            type="text"
-            onChange={(eventC) => this.handleOnChangeChannel(eventC)}
-          ></input>
-          day la channel cua minh: {this.state.channel}
-        </div>
-        <div className="third">
-          <button onClick={() => this.handleClickButton()}>Click me</button>
-        </div>
-      </>
-    );
-  }
+    /* 
+    JSX => return block
+    fragment
+    */
+    handleChangeFirstName = (event) => {
+        this.setState({
+            firstName: event.target.value
+        })
+    }
+    handleChangeLastName = (event) => {
+        this.setState({
+            lastName: event.target.value
+        })
+    }
+    handleSubmit = (event) => {
+        event.preventDefault()
+        console.log('>>> check data input: ', this.state)
+    }
+    //re-render
+    render() {
+        console.log('>>> call render: ', this.state)
+        return (
+            <>
+                <form>
+                    <label htmlFor="fname">First name:</label><br />
+                    <input
+                        type="text"
+                        value={this.state.firstName}
+                        onChange={(event) => this.handleChangeFirstName(event)}
+                    />
+                    <br />
+                    <label htmlFor="lname">Last name:</label><br />
+                    <input
+                        type="text"
+                        value={this.state.lastName}
+                        onChange={(event) => this.handleChangeLastName(event)}
+                    /><br /><br />
+                    <input type="submit"
+                        onClick={(event) => this.handleSubmit(event)}
+                    />
+                </form>
+
+                <ChildComponent
+                    name={this.state.firstName}
+                    age={'25'}
+
+                    address={'Ha noi'}
+                    arrJobs={this.state.arrJobs}
+                />
+
+
+            </>
+        )
+    }
 }
-
 export default MyComponent;
-
-// JSX => return block
-// fragment
