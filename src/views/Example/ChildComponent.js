@@ -4,7 +4,7 @@ class ChildComponent extends React.Component {
   state = {
     firstName: "",
     lastName: "",
-    showJob: false 
+    showJob: false,
   };
   /* 
     JSX => return block
@@ -24,31 +24,44 @@ class ChildComponent extends React.Component {
     event.preventDefault();
     console.log(">>> check data input: ", this.state);
   };
+  handleShowHide = () => {
+    this.setState({
+      showJob: !this.state.showJob,
+    });
+  };
   //re-render
   render() {
     console.log(">>> check props: ", this.props);
     // let name = this.props.name;
     // let age = this.props.age;
     //key:value
-    let {showJob} = this.state.showJob;
-
-    let { name, age, address, arrJobs } = this.props;
+    let  showJob  = this.state.showJob;
+    let check = showJob === true ? "showJob = true" : "showJob = false";
+    let { arrJobs } = this.props;
+    console.log("check:", check);
     return (
       <>
-        <button>Show</button>
-        <div className="job-lists">
-          {
-            //map
-            arrJobs.map((item, index) => {
-              return (
-                <div key={item.id}>
-                  {item.title} - {item.salary}
-                </div>
-              );
-            })
-          }
-        </div>
-        <button>Hide</button>
+        {showJob === false ? (
+          <div>
+            <button onClick={() => this.handleShowHide()}>Show</button>
+          </div>
+        ) : (
+          <>
+            <div className="job-lists">
+              {
+                //map
+                arrJobs.map((item, index) => {
+                  return (
+                    <div key={item.id}>
+                      {item.title} - {item.salary}
+                    </div>
+                  );
+                })
+              }
+            </div>
+            <button onClick={() => this.handleShowHide()}>Hide</button>
+          </>
+        )}
       </>
     );
   }
