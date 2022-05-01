@@ -11,13 +11,21 @@ class MyComponent extends React.Component {
     ],
   };
   addNewJob = (job) => {
-    console.log('check job from parent: ', job)
+    console.log("check job from parent: ", job);
+    // let currentJob = this.state.arrJobs;
+    // currentJob.push(job)
     this.setState({
-        arrJobs: [...this.state.arrJobs, job]
-    })
-
-}
-
+      arrJobs: [...this.state.arrJobs, job],
+      // arrJobs: currentJob
+    });
+  };
+  deleteJob = (job) => {
+      let currentJob = this.state.arrJobs
+      currentJob = currentJob.filter(item => item.id !== job.id)
+      this.setState({
+          arrJobs: currentJob
+      })
+  }
   /* 
     JSX => return block
     fragment
@@ -29,7 +37,7 @@ class MyComponent extends React.Component {
       <>
         <AddComponent addNewJob={this.addNewJob} />
 
-        <ChildComponent arrJobs={this.state.arrJobs} />
+        <ChildComponent arrJobs={this.state.arrJobs} deleteJob ={this.deleteJob}/>
       </>
     );
   }
