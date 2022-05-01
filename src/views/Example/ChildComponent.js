@@ -1,4 +1,5 @@
 import React from "react";
+import './demo.scss'
 class ChildComponent extends React.Component {
   //key:value
   state = {
