@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { toast } from 'react-toastify';
-
 export default class AddTodo extends Component {
    state = {
       title: "",

@@ -1,21 +1,31 @@
-import logo from "./logo.svg";
 import "./App.scss";
 import ListTodo from "./Todos/ListTodo";
-import { ToastContainer, toast } from "react-toastify";
+import Home from "./Example/Home";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import MyComponent from "./Example/MyComponent";
+import Nav from "./Nav/Nav";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ListUser from "./Users/ListUser";
+import DetailUser from "./Users/DetailUser";
+
+import MyComponent from "./Example/MyComponent";
+
 function App() {
-   return (
-      <div className="App">
-         <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            {/* <MyComponent></MyComponent> */}
-            <p>Welcome to List Todo</p>
-            <ListTodo></ListTodo>
-         </header>
-         <ToastContainer />
-      </div>
-   );
+    return (
+        <div className="App">
+            <Router>
+                <Nav />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/listtodo" element={<ListTodo />} />
+                    <Route path="/about" element={<MyComponent />} />
+                    <Route path="/user" element={<ListUser />} />
+                    <Route path="/user/:id" element={<DetailUser />} />
+                </Routes>
+                <ToastContainer />
+            </Router>
+        </div>
+    );
 }
 
 export default App;
