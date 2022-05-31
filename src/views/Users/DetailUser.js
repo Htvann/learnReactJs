@@ -5,10 +5,9 @@ import axios from "axios";
 class DetailUser extends Component {
     async componentDidMount() {
         if (this.props.params) {
-            let id = this.props.params;
-            let res = await axios.get(`https://reqres.in/api/users/2`);
-            console.log(id);
-            console.log("check res: ", res);
+            let id = this.props.params.id;
+            let res = await axios.get(`https://reqres.in/api/users/${id}`);
+            console.log(res.data);
         }
     }
 
